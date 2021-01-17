@@ -17,13 +17,19 @@ const RegisterWorker = () => {
                 validate={values => {
                     let errors = {};
                     if (!values.email) {
-                        errors.email = 'Pole wymagane';
+                        errors.email = 'Pole wymagane.';
+                    } else if(!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)){
+                        errors.email = 'Niepoprawny email.';
                     }
+
                     if (!values.password) {
-                        errors.password = "Pole wymagane";
+                        errors.password = "Pole wymagane.";
+                    } else if(!/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$/i.test(values.password)){
+                        errors.password = 'Hasło musi mieć przynajmniej 8 znaków, zawierać jedną cyfrę oraz znak specjalny.';
                     }
+
                     if (values.confirmPassword !== values.password) {
-                        errors.confirmPassword = "Hasła nie są identyczne";
+                        errors.confirmPassword = "Hasła nie są identyczne.";
                     }
                     return errors;
 
