@@ -1,4 +1,6 @@
 import React, {useState} from "react"
+import {NavLink} from "react-router-dom";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Navbar = () => {
@@ -8,9 +10,7 @@ const Navbar = () => {
 
     return (
         <nav className="navbar fixed-top navbar-expand-lg navbar-light bg-light rounded">
-            <a className="navbar-brand text-info font-weight-bolder" href="/">
-                <span className="">BHP</span>
-            </a>
+            <NavLink to={"/"} className="navbar-brand text-info font-weight-bolder">BHP</NavLink>
             <button
                 className="custom-toggler navbar-toggler"
                 type="button" data-toggle="collapse"
@@ -23,10 +23,10 @@ const Navbar = () => {
                 <span className="navbar-toggler-icon"/>
             </button>
             <div className={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse`} id="collapsing-navbar">
-                <a className="nav-link text-info" href="/register">Zarejestruj</a>
-                <a className="nav-link text-info" href="/login">Zaloguj</a>
-                <a className="nav-link text-info" href="/forms">Lista Formularzy</a>
-                <a className="nav-link text-info" href="/help">Pomoc</a>
+                <NavLink to={"/register"} className="nav-link text-info">Zarejestruj</NavLink>
+                <NavLink to={"/login"} className="nav-link text-info">Zaloguj</NavLink>
+                <NavLink to={"/form-list"} className="nav-link text-info">Lista Formularzy</NavLink>
+                <NavLink to={"/help"} className="nav-link text-info">Pomoc</NavLink>
             </div>
         </nav>
     );
