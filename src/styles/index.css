@@ -13,5 +13,11 @@ code {
 }
 
 .App {
-  padding-top: 65px;
+  padding-top: 180px;
 }
+
+.navbar-dropdown{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+

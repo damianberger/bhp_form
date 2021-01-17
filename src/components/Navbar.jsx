@@ -1,10 +1,12 @@
 import React, {useState} from "react"
 import {NavLink} from "react-router-dom";
+import {Dropdown} from "react-bootstrap";
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Navbar = () => {
     const [isNavCollapsed, setIsNavCollapsed] = useState(true);
+    const [isLogged, setIsLogged] = useState(false);
 
     const handleNavCollapse = () => setIsNavCollapsed(!isNavCollapsed);
 
@@ -23,10 +25,28 @@ const Navbar = () => {
                 <span className="navbar-toggler-icon"/>
             </button>
             <div className={`${isNavCollapsed ? 'collapse' : ''} navbar-collapse`} id="collapsing-navbar">
-                <NavLink to={"/register"} className="nav-link text-info">Zarejestruj</NavLink>
-                <NavLink to={"/login"} className="nav-link text-info">Zaloguj</NavLink>
-                <NavLink to={"/form-list"} className="nav-link text-info">Lista Formularzy</NavLink>
-                <NavLink to={"/help"} className="nav-link text-info">Pomoc</NavLink>
+                <NavLink to={"/pomoc"} className="nav-link text-info">Pomoc</NavLink>
+
+                {!isLogged &&
+                <NavLink to={"/logowanie"} className="nav-link text-info">Zaloguj</NavLink>
+                }
+
+                {isLogged &&
+                <NavLink to={"/lista-formularzy"} className="nav-link text-info">Lista Formularzy</NavLink>
+                }
+
+                {!isLogged &&
+                <Dropdown className={"navbar-dropdown"}>
+                    <Dropdown.Toggle variant={"outline-info"} className={"dropdown-button"} id="dropdown-basic">
+                        Rejestracja
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu>
+                        <NavLink to={"/rejestracja-firmy"} className="nav-link text-info">Dla firmy</NavLink>
+                        <NavLink to={"/rejestracja-pracownika"} className="nav-link text-info">Dla pracownika</NavLink>
+                    </Dropdown.Menu>
+                </Dropdown>
+                }
+
             </div>
         </nav>
     );
