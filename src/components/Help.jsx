@@ -3,7 +3,7 @@ import React, {useEffect} from "react";
 const Help = () => {
 
     useEffect(() => {
-        document.title = 'Help';
+        document.title = 'Pomoc';
     }, [])
 
     return (

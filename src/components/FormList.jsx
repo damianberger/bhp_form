@@ -3,7 +3,7 @@ import React, {useEffect} from "react";
 const FormList = () => {
 
     useEffect(() => {
-        document.title = 'Form list';
+        document.title = 'Dostępne formularze';
     }, [])
 
     return (
