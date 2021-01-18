@@ -11,3 +11,14 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.App {
+  padding-top: 180px;
+  padding-bottom: 180px;
+}
+
+.navbar-dropdown{
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
