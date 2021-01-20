@@ -2,17 +2,18 @@ import axios from "axios";
 
 const API_URL = "http://localhost:8080/api/auth/";
 
-const registerWorker = (email, password) => {
+const register = (username, password, companyDto) => {
     return axios.post(API_URL + "register", {
-        email,
+        username,
         password,
+        companyDto
     });
 };
 
-const login = (email, password) => {
+const login = (username, password) => {
     return axios
         .post(API_URL + "login", {
-            email,
+            username,
             password,
         })
         .then((response) => {
@@ -29,7 +30,7 @@ const logout = () => {
 
 
 export default {
-    registerWorker,
+    register,
     login,
     logout,
 };
