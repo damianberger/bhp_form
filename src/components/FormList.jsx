@@ -9,7 +9,7 @@ const FormList = () => {
 
     return (
         <div className={"container"}>
-            <NavLink to={"/protokol-wypadku"} className="nav-link text-info">
+            <NavLink to={"/protokol-wypadku/krok-1"} className="nav-link text-info">
                 <h1 className={"text-center"}>Formularz protokołu wypadku</h1>
             </NavLink>
 

@@ -6,3 +6,8 @@ export const LOGOUT = "LOGOUT";
 
 export const SET_MESSAGE = "SET_MESSAGE";
 export const CLEAR_MESSAGE = "CLEAR_MESSAGE";
+
+export const SET_PROTOCOL_HEADER = "SET_PROTOCOL_HEADER";
+export const CLEAR_PROTOCOL = "CLEAR_PROTOCOL";
+
+
