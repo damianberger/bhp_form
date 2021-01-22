@@ -1,12 +1,13 @@
 import {
     SET_PROTOCOL_HEADER,
+    SET_PROTOCOL_INVESTIGATORS
 } from "../actions/types";
 
 const initialState = {
     protocolHeader: {
         companyDto: {},
     },
-    protocolVictim: {},
+    accidentProtocolInvestigators: [],
 }
 
 export default function (state = initialState, action) {
@@ -17,6 +18,11 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 protocolHeader: payload.protocolHeader,
+            };
+        case SET_PROTOCOL_INVESTIGATORS:
+            return {
+                ...state,
+                accidentProtocolInvestigators: payload.accidentProtocolInvestigators,
             };
         default:
             return state;

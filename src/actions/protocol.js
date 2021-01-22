@@ -1,4 +1,4 @@
-import {SET_PROTOCOL_HEADER} from "./types";
+import {SET_PROTOCOL_HEADER, SET_PROTOCOL_INVESTIGATORS} from "./types";
 
 
 export const setHeader = ({protocolNumber, companyDto}) => ({
@@ -8,5 +8,12 @@ export const setHeader = ({protocolNumber, companyDto}) => ({
             protocolNumber: protocolNumber,
             companyDto: companyDto
         }
+    }
+});
+
+export const setInvestigators = ({accidentProtocolInvestigators}) => ({
+    type: SET_PROTOCOL_INVESTIGATORS,
+    payload: {
+        accidentProtocolInvestigators: accidentProtocolInvestigators
     }
 });

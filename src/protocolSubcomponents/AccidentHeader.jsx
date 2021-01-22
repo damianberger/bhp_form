@@ -11,40 +11,13 @@ const AccidentHeader = () => {
     const dispatch = useDispatch();
     const {protocolHeader: header} = useSelector((state) => state.protocol)
 
-    const protocolNumber = useWatch({
-        control,
-        name: 'protocolNumber',
-    });
-
-    const companyName = useWatch({
-        control,
-        name: 'companyName',
-    });
-
-    const street = useWatch({
-        control,
-        name: 'street',
-    });
-
-    const city = useWatch({
-        control,
-        name: 'city',
-    });
-
-    const postalCode = useWatch({
-        control,
-        name: 'postalCode',
-    });
-
-    const taxIdentificationNumber = useWatch({
-        control,
-        name: 'taxIdentificationNumber',
-    });
-
-    const pkdNumber = useWatch({
-        control,
-        name: 'pkdNumber',
-    });
+    const protocolNumber = useWatch({control, name: 'protocolNumber',});
+    const companyName = useWatch({control, name: 'companyName',});
+    const street = useWatch({control, name: 'street',});
+    const city = useWatch({control, name: 'city',});
+    const postalCode = useWatch({control, name: 'postalCode',});
+    const taxIdentificationNumber = useWatch({control, name: 'taxIdentificationNumber',});
+    const pkdNumber = useWatch({control, name: 'pkdNumber',});
 
     const companyDto = {
         companyName,
@@ -153,25 +126,18 @@ const AccidentHeader = () => {
                         type="text"
                         defaultValue={header.companyDto.pkdNumber}
                         className={`form-control ${errors.pkdNumber ? "border-danger" : ""}`}
-                        ref={register({
-                            pattern: {
-                                value: /[0-9]{2}.[0-9]{2}.[zZ]/i,
-                                message: "Poprawny format kodu PKD:   ##.##.Z"
-                            }
-                        })}
+                        ref={register}
                     />
 
                     <button className="btn-light">
                         <NavLink
-                            classname="nav-link text-info" to={"/protokol-wypadku"}
+                            className="nav-link text-info" to={"/protokol-wypadku"}
                         >Wstecz</NavLink>
                     </button>
                     <button className="float-right btn-light">
-                        <NavLink classname={"nav-link text-info"}
+                        <NavLink className={"nav-link text-info"}
                                  to={"/protokol-wypadku/krok-2"}>Dalej</NavLink>
                     </button>
-
-
 
                 </div>
             </form>

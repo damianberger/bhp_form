@@ -25,7 +25,7 @@ const AccidentProtocolForm = () => {
                     <Switch>
                         <Route exact path="/protokol-wypadku" component={Begin}/>
                         <Route path="/protokol-wypadku/krok-1" component={AccidentHeader}/>
-                        {/*<Route path="/protokol-wypadku/step2" component={AccidentCause}/>*/}
+                        <Route path="/protokol-wypadku/krok-2" component={AccidentInvestigators}/>
                         {/*<Route path="/protokol-wypadku/step3" component={AccidentEffects}/>*/}
                         {/*<Route path="/protokol-wypadku/step4" component={AccidentInvestigators}/>*/}
                         {/*<Route path="/protokol-wypadku/step5" component={AccidentType}/>*/}
