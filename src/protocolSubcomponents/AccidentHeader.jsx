@@ -35,7 +35,7 @@ const AccidentHeader = () => {
 
     return (
         <div className={"form-container"}>
-            <h2 className="text-center">1. Protokół ustalenia przyczyn wypadku</h2>
+            <h1 className="text-center">Protokół ustalenia przyczyn wypadku</h1>
             <form>
                 <div className="container">
                     <label className={"form-label-title"}>Numer protokołu</label>
@@ -50,7 +50,7 @@ const AccidentHeader = () => {
                     />
 
 
-                    <h2 className="text-center">2. Dane pracodawcy</h2>
+                    <h2 className="text-center">1. Dane pracodawcy</h2>
 
                     <label className={"form-label-title"}>Nazwa firmy</label>
                     {errors.companyName && <label className="text-danger"> {errors.companyName.message} </label>}

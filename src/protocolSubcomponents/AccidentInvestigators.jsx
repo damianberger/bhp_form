@@ -49,7 +49,7 @@ const AccidentInvestigators = () => {
 
     return (
         <div className={"form-container"}>
-            <h1 className="text-center">3. Zespół powypadkowy</h1>
+            <h2 className="text-center">2. Zespół powypadkowy</h2>
             <form onSubmit={e => e.preventDefault()}>
                 <div className="container">
                     <label className={"form-label-title"}>Imię</label>

@@ -2,6 +2,7 @@ import {
     SET_PROTOCOL_HEADER,
     SET_PROTOCOL_INVESTIGATORS,
     SET_PROTOCOL_DATES,
+    SET_PROTOCOL_VICTIMS,
 } from "../actions/types";
 
 const initialState = {
@@ -10,6 +11,8 @@ const initialState = {
     },
     accidentProtocolInvestigators: [],
     accidentProtocolDates: {},
+    accidentProtocolVictims: [],
+
 }
 
 export default function (state = initialState, action) {
@@ -30,6 +33,11 @@ export default function (state = initialState, action) {
             return {
                 ...state,
                 accidentProtocolDates: payload.accidentProtocolDates,
+            };
+        case SET_PROTOCOL_VICTIMS:
+            return {
+                ...state,
+                accidentProtocolVictims: payload.accidentProtocolVictims,
             };
         default:
             return state;
