@@ -151,20 +151,20 @@ const AccidentInvestigators = () => {
                         }
                     </ol>
 
-                    <button className="btn-light" onClick={addMember}>
+                    <button className="btn-light" onClick={addMember} type="button">
                        Zapisz i/lub dodaj kolejną osobę.
                     </button>
 
                     <br/>
                     <br/>
 
-                    <button className="btn-light">
+                    <button className="btn-light" type="button">
                         <NavLink
                             className="nav-link text-info" to={"/protokol-wypadku/krok-1"}
                         >Wstecz</NavLink>
                     </button>
 
-                    <button className="float-right btn-light">
+                    <button className="float-right btn-light" type="button">
                         <NavLink className={"nav-link text-info"}
                                  to={"/protokol-wypadku/krok-3"}>Dalej</NavLink>
                     </button>

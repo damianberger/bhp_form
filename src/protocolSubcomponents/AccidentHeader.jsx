@@ -129,12 +129,12 @@ const AccidentHeader = () => {
                         ref={register}
                     />
 
-                    <button className="btn-light">
+                    <button className="btn-light" type="button">
                         <NavLink
                             className="nav-link text-info" to={"/protokol-wypadku"}
                         >Wstecz</NavLink>
                     </button>
-                    <button className="float-right btn-light">
+                    <button className="float-right btn-light" type="button">
                         <NavLink className={"nav-link text-info"}
                                  to={"/protokol-wypadku/krok-2"}>Dalej</NavLink>
                     </button>

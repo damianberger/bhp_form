@@ -1,4 +1,4 @@
-import {SET_PROTOCOL_HEADER, SET_PROTOCOL_INVESTIGATORS} from "./types";
+import {SET_PROTOCOL_HEADER, SET_PROTOCOL_INVESTIGATORS, SET_PROTOCOL_DATES} from "./types";
 
 
 export const setHeader = ({protocolNumber, companyDto}) => ({
@@ -15,5 +15,17 @@ export const setInvestigators = ({accidentProtocolInvestigators}) => ({
     type: SET_PROTOCOL_INVESTIGATORS,
     payload: {
         accidentProtocolInvestigators: accidentProtocolInvestigators
+    }
+});
+
+export const setDates = ({accidentProceedingStart, accidentProceedingEnd, accidentDate, accidentTime}) => ({
+    type: SET_PROTOCOL_DATES,
+    payload: {
+        accidentProtocolDates: {
+            accidentProceedingStart: accidentProceedingStart,
+            accidentProceedingEnd: accidentProceedingEnd,
+            accidentDate: accidentDate,
+            accidentTime: accidentTime,
+        }
     }
 });
