@@ -5,23 +5,23 @@ import {useDispatch, useSelector} from "react-redux";
 import {setInvestigators} from "../actions/protocol";
 
 const AccidentInvestigators = () => {
-    const {register, errors, control, reset} = useForm({mode: 'all'});
+    const {register, errors, control, setValue} = useForm({mode: 'all'});
     const dispatch = useDispatch();
-    const {accidentProtocolInvestigators: investigators} = useSelector((state) => state.protocol)
+    const {accidentInvestigatorsDto: investigators} = useSelector((state) => state.protocol)
 
-    let accidentProtocolInvestigators = investigators;
+    let accidentInvestigatorsDto = investigators;
 
-    const name = useWatch({control, name: 'name',});
-    const surname = useWatch({control, name: 'surname',});
-    const workPosition = useWatch({control, name: 'workPosition',});
-    const companyName = useWatch({control, name: 'companyName',});
-    const street = useWatch({control, name: 'street',});
-    const city = useWatch({control, name: 'city',});
-    const postalCode = useWatch({control, name: 'postalCode',});
-    const taxIdentificationNumber = useWatch({control, name: 'taxIdentificationNumber',});
-    const pkdNumber = useWatch({control, name: 'pkdNumber',});
+    let name = useWatch({control, name: 'name',});
+    let surname = useWatch({control, name: 'surname',});
+    let workPosition = useWatch({control, name: 'workPosition',});
+    let companyName = useWatch({control, name: 'companyName',});
+    let street = useWatch({control, name: 'street',});
+    let city = useWatch({control, name: 'city',});
+    let postalCode = useWatch({control, name: 'postalCode',});
+    let taxIdentificationNumber = useWatch({control, name: 'taxIdentificationNumber',});
+    let pkdNumber = useWatch({control, name: 'pkdNumber',});
 
-    let member = {
+    let teamMember = {
         name,
         surname,
         workPosition,
@@ -37,14 +37,22 @@ const AccidentInvestigators = () => {
 
 
     const addMember = () => {
-        accidentProtocolInvestigators.push(member)
-        reset();
-        dispatch(setInvestigators({accidentProtocolInvestigators}));
+        accidentInvestigatorsDto.push(teamMember)
+        setValue('name','')
+        setValue('surname','')
+        setValue('workPosition','')
+        setValue('companyName','')
+        setValue('street','')
+        setValue('city','')
+        setValue('postalCode','')
+        setValue('taxIdentificationNumber','')
+        setValue('pkdNumber','')
+        dispatch(setInvestigators({accidentInvestigatorsDto}));
     }
 
     const removeMember = (index) => {
-        accidentProtocolInvestigators.splice(index, 1);
-        dispatch(setInvestigators({accidentProtocolInvestigators}));
+        accidentInvestigatorsDto.splice(index, 1);
+        dispatch(setInvestigators({accidentInvestigatorsDto}));
     }
 
     return (
@@ -145,7 +153,7 @@ const AccidentInvestigators = () => {
                     />
 
                     <ol>
-                        {accidentProtocolInvestigators.length > 0 && accidentProtocolInvestigators.map((item, index) =>{
+                        {accidentInvestigatorsDto.length > 0 && accidentInvestigatorsDto.map((item, index) =>{
                             return <li key={index}>{item.name} - {item.surname} - {item.workPosition} - {item.companyDto.companyName} <button className="btn-light" onClick={() => removeMember(index)}>Usuń z listy</button></li>
                         })
                         }

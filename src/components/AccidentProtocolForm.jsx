@@ -6,6 +6,8 @@ import AccidentHeader from "../protocolSubcomponents/AccidentHeader";
 import AccidentInvestigators from "../protocolSubcomponents/AccidentInvestigators";
 import AccidentDates from "../protocolSubcomponents/AccidentDates";
 import AccidentVictim from "../protocolSubcomponents/AccidentVictim";
+import AccidentCircumstances from "../protocolSubcomponents/AccidentCircumstances";
+import AccidentCauses from "../protocolSubcomponents/AccidentCauses";
 // import AccidentCause from "../protocolSubcomponents/AccidentCause";
 // import AccidentEffects from "../protocolSubcomponents/AccidentEffects";
 // import AccidentProtocolAttachment from "../protocolSubcomponents/AccidentProtocolAttachment";
@@ -30,8 +32,8 @@ const AccidentProtocolForm = () => {
                         <Route path="/protokol-wypadku/krok-2" component={AccidentInvestigators}/>
                         <Route path="/protokol-wypadku/krok-3" component={AccidentDates}/>
                         <Route path="/protokol-wypadku/krok-4" component={AccidentVictim}/>
-                        {/*<Route path="/protokol-wypadku/step5" component={AccidentType}/>*/}
-                        {/*<Route path="/protokol-wypadku/step6" component={AccidentVictim}/>*/}
+                        <Route path="/protokol-wypadku/krok-5" component={AccidentCircumstances}/>
+                        <Route path="/protokol-wypadku/krok-6" component={AccidentCauses}/>
                         {/*<Route path="/protokol-wypadku/step7" component={AfterAccidentRecommendation}/>*/}
                         {/*<Route path="/protokol-wypadku/step8" name="Login" component={AccidentProtocolAttachment}/>*/}
                         {/*<Route path="/protokol-wypadku/summary" component={Summary}/>*/}

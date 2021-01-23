@@ -9,7 +9,10 @@ import {NavLink} from "react-router-dom";
 const AccidentDates = () => {
     const {register, errors, control} = useForm({mode: 'all'});
     const dispatch = useDispatch();
-    const {accidentProtocolDates: dates} = useSelector((state) => state.protocol)
+    const {accidentProceedingStart: aPS} = useSelector((state) => state.protocol)
+    const {accidentProceedingEnd: aPE} = useSelector((state) => state.protocol)
+    const {accidentDate: aD} = useSelector((state) => state.protocol)
+    const {accidentTime: aT} = useSelector((state) => state.protocol)
 
     const accidentProceedingStart = useWatch({control, name: 'accidentProceedingStart',});
     const accidentProceedingEnd = useWatch({control, name: 'accidentProceedingEnd',});
@@ -32,7 +35,7 @@ const AccidentDates = () => {
                         onBlur={saveData}
                         name="accidentProceedingStart"
                         type="date"
-                        defaultValue={dates.accidentProceedingStart}
+                        defaultValue={aPS}
                         className={`form-control ${errors.accidentProceedingStart ? "border-danger" : ""}`}
                         ref={register}
                     />
@@ -44,7 +47,7 @@ const AccidentDates = () => {
                         onBlur={saveData}
                         name="accidentProceedingEnd"
                         type="date"
-                        defaultValue={dates.accidentProceedingEnd}
+                        defaultValue={aPE}
                         className={`form-control ${errors.accidentProceedingEnd ? "border-danger" : ""}`}
                         ref={register}
                     />
@@ -55,7 +58,7 @@ const AccidentDates = () => {
                         onBlur={saveData}
                         name="accidentDate"
                         type="date"
-                        defaultValue={dates.accidentDate}
+                        defaultValue={aD}
                         className={`form-control ${errors.accidentDate ? "border-danger" : ""}`}
                         ref={register}
                     />
@@ -66,7 +69,7 @@ const AccidentDates = () => {
                         onBlur={saveData}
                         name="accidentTime"
                         type="time"
-                        defaultValue={dates.accidentTime}
+                        defaultValue={aT}
                         className={`form-control ${errors.accidentTime ? "border-danger" : ""}`}
                         ref={register}
                     />

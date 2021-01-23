@@ -9,7 +9,8 @@ import {NavLink} from "react-router-dom";
 const AccidentHeader = () => {
     const {register, errors, control} = useForm({mode: 'all'});
     const dispatch = useDispatch();
-    const {protocolHeader: header} = useSelector((state) => state.protocol)
+    const {protocolNumber: number} = useSelector((state) => state.protocol)
+    const {companyDto: company} = useSelector((state) => state.protocol)
 
     const protocolNumber = useWatch({control, name: 'protocolNumber',});
     const companyName = useWatch({control, name: 'companyName',});
@@ -19,7 +20,7 @@ const AccidentHeader = () => {
     const taxIdentificationNumber = useWatch({control, name: 'taxIdentificationNumber',});
     const pkdNumber = useWatch({control, name: 'pkdNumber',});
 
-    const companyDto = {
+    let companyDto = {
         companyName,
         street,
         city,
@@ -44,7 +45,7 @@ const AccidentHeader = () => {
                         onBlur={saveData}
                         name="protocolNumber"
                         type="text"
-                        defaultValue={header.protocolNumber}
+                        defaultValue={number}
                         className={`form-control ${errors.protocolNumber ? "border-danger" : ""}`}
                         ref={register}
                     />
@@ -58,7 +59,7 @@ const AccidentHeader = () => {
                         onBlur={saveData}
                         name="companyName"
                         type="text"
-                        defaultValue={header.companyDto.companyName}
+                        defaultValue={company.companyName}
                         className={`form-control ${errors.companyName ? "border-danger" : ""}`}
                         ref={register}
                     />
@@ -69,7 +70,7 @@ const AccidentHeader = () => {
                         onBlur={saveData}
                         name="street"
                         type="text"
-                        defaultValue={header.companyDto.street}
+                        defaultValue={company.street}
                         className={`form-control ${errors.street ? "border-danger" : ""}`}
                         ref={register}
                     />
@@ -80,7 +81,7 @@ const AccidentHeader = () => {
                         onBlur={saveData}
                         name="city"
                         type="text"
-                        defaultValue={header.companyDto.city}
+                        defaultValue={company.city}
                         className={`form-control ${errors.city ? "border-danger" : ""}`}
                         ref={register}
                     />
@@ -91,7 +92,7 @@ const AccidentHeader = () => {
                         onBlur={saveData}
                         name="postalCode"
                         type="text"
-                        defaultValue={header.companyDto.postalCode}
+                        defaultValue={company.postalCode}
                         className={`form-control ${errors.postalCode ? "border-danger" : ""}`}
                         ref={register({
                             pattern: {
@@ -108,7 +109,7 @@ const AccidentHeader = () => {
                         onBlur={saveData}
                         name="taxIdentificationNumber"
                         type="number"
-                        defaultValue={header.companyDto.taxIdentificationNumber}
+                        defaultValue={company.taxIdentificationNumber}
                         className={`form-control ${errors.taxIdentificationNumber ? "border-danger" : ""}`}
                         ref={register({
                             pattern: {
@@ -124,7 +125,7 @@ const AccidentHeader = () => {
                         onBlur={saveData}
                         name="pkdNumber"
                         type="text"
-                        defaultValue={header.companyDto.pkdNumber}
+                        defaultValue={company.pkdNumber}
                         className={`form-control ${errors.pkdNumber ? "border-danger" : ""}`}
                         ref={register}
                     />
