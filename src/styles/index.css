@@ -13,12 +13,40 @@ code {
 }
 
 .App {
-  padding-top: 180px;
-  padding-bottom: 180px;
+  position: relative;
+  padding-top: 70px;
+  padding-bottom: 30px;
 }
 
-.navbar-dropdown{
-  padding-left: 10px;
-  padding-right: 10px;
+.collapsed {
+  position: relative;
+  top: 200px;
+}
+
+.navHeader {
+  background-color: #d5ffff;
+}
+
+.form-control {
+  margin-bottom: 20px;
+}
+
+.form-label-title {
+  padding-right: 5px;
+  padding-left: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 2px;
+  border: 1px solid #808080;
+}
+
+.form-container{
+  position: relative;
+  padding-bottom: 30px;
+  margin-bottom: 50px;
+  border: 1px #427da2 solid;
+  width: 90%;
+  left: 5%;
+  border-radius: 10px;
 }
 
