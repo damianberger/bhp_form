@@ -34,10 +34,9 @@ const AccidentDates = () => {
     }
 
     return (
-        <div className={"form-container"}>
-            <h2 className="text-center">3. Dane czasu wypadku</h2>
             <form>
                 <div className="container">
+                    <h2 className="text-center">3. Dane czasu wypadku</h2>
                     <label className={"form-label-title"}>Data ustalenia okoliczności wypadku od</label>
                     {errors.accidentProceedingStart && <label className="text-danger"> {errors.accidentProceedingStart.message} </label>}
                     <input
@@ -82,20 +81,8 @@ const AccidentDates = () => {
                         className={`form-control ${errors.accidentTime ? "border-danger" : ""}`}
                         ref={register}
                     />
-
-                    <button className="btn-light" type="button">
-                        <NavLink
-                            className="nav-link text-info" to={"/protokol-wypadku/krok-2"}
-                        >Wstecz</NavLink>
-                    </button>
-                    <button className="float-right btn-light" type="button">
-                        <NavLink className={"nav-link text-info"}
-                                 to={"/protokol-wypadku/krok-4"}>Dalej</NavLink>
-                    </button>
-
                 </div>
             </form>
-        </div>
     );
 }
 

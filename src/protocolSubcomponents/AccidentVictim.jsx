@@ -46,10 +46,9 @@ const AccidentInvestigators = () => {
     }
 
     return (
-        <div className={"form-container"}>
-            <h2 className="text-center">4. Ofiara wypadku</h2>
             <form onSubmit={e => e.preventDefault()}>
                 <div className="container">
+                    <h2 className="text-center">4. Ofiara wypadku</h2>
                     <label className={"form-label-title"}>Imię</label>
                     {errors.name && <label className="text-danger"> {errors.name.message} </label>}
                     <input
@@ -194,20 +193,8 @@ const AccidentInvestigators = () => {
                         className={`form-control ${errors.identificationDocumentNumber ? "border-danger" : ""}`}
                         ref={register}
                     />
-
-                    <button className="btn-light" type="button">
-                        <NavLink
-                            className="nav-link text-info" to={"/protokol-wypadku/krok-3"}
-                        >Wstecz</NavLink>
-                    </button>
-
-                    <button className="float-right btn-light" type="button">
-                        <NavLink className={"nav-link text-info"}
-                                 to={"/protokol-wypadku/krok-5"}>Dalej</NavLink>
-                    </button>
                 </div>
             </form>
-        </div>
     );
 }
 

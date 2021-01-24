@@ -54,11 +54,9 @@ const AccidentEffectsType = () => {
     }
 
     return (
-        <div className={"form-container"}>
-            <h2 className="text-center">7. Konsekwencje wypadku</h2>
             <form onSubmit={e => e.preventDefault()}>
                 <div className="container">
-
+                    <h2 className="text-center">7. Konsekwencje wypadku</h2>
                     <label className={"form-label-title"}>Konsekwencja wypadku</label>
                     {errors.accidentEffects && <label className="text-danger"> {errors.accidentEffects.message} </label>}
                     <input
@@ -112,20 +110,8 @@ const AccidentEffectsType = () => {
 
                     <label className={"form-label-title"}>Typ wypadku 5</label>
                     <input type="checkbox" name="acc5" onBlur={saveData} ref={register} defaultChecked={types.acc5}/><br/><br/>
-
-                    <button className="btn-light" type="button">
-                        <NavLink
-                            className="nav-link text-info" to={"/protokol-wypadku/krok-6"}
-                        >Wstecz</NavLink>
-                    </button>
-
-                    <button className="float-right btn-light" type="button">
-                        <NavLink className={"nav-link text-info"}
-                                 to={"/protokol-wypadku/podsumowanie"}>Dalej</NavLink>
-                    </button>
                 </div>
             </form>
-        </div>
     );
 }
 

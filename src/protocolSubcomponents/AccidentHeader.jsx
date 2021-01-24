@@ -35,10 +35,10 @@ const AccidentHeader = () => {
 
 
     return (
-        <div className={"form-container"}>
-            <h1 className="text-center">Protokół ustalenia przyczyn wypadku</h1>
             <form>
                 <div className="container">
+                    <h1 className="text-center">Protokół ustalenia przyczyn wypadku</h1>
+
                     <label className={"form-label-title"}>Numer protokołu</label>
                     {errors.protocolNumber && <label className="text-danger"> {errors.protocolNumber.message} </label>}
                     <input
@@ -129,20 +129,8 @@ const AccidentHeader = () => {
                         className={`form-control ${errors.pkdNumber ? "border-danger" : ""}`}
                         ref={register}
                     />
-
-                    <button className="btn-light" type="button">
-                        <NavLink
-                            className="nav-link text-info" to={"/protokol-wypadku"}
-                        >Wstecz</NavLink>
-                    </button>
-                    <button className="float-right btn-light" type="button">
-                        <NavLink className={"nav-link text-info"}
-                                 to={"/protokol-wypadku/krok-2"}>Dalej</NavLink>
-                    </button>
-
                 </div>
             </form>
-        </div>
     );
 }
 

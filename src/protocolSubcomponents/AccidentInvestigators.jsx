@@ -37,16 +37,12 @@ const AccidentInvestigators = () => {
 
 
     const addMember = () => {
-        accidentInvestigatorsDto.push(teamMember)
-        setValue('name','')
-        setValue('surname','')
-        setValue('workPosition','')
-        setValue('companyName','')
-        setValue('street','')
-        setValue('city','')
-        setValue('postalCode','')
-        setValue('taxIdentificationNumber','')
-        setValue('pkdNumber','')
+        if(name && surname && workPosition && companyName && street && city && postalCode && taxIdentificationNumber && pkdNumber){
+            accidentInvestigatorsDto.push(teamMember)
+            setValue('name','')
+            setValue('surname','')
+            setValue('workPosition','')
+        }
         dispatch(setInvestigators({accidentInvestigatorsDto}));
     }
 
@@ -56,10 +52,9 @@ const AccidentInvestigators = () => {
     }
 
     return (
-        <div className={"form-container"}>
-            <h2 className="text-center">2. Zespół powypadkowy</h2>
             <form onSubmit={e => e.preventDefault()}>
                 <div className="container">
+                    <h2 className="text-center">2. Zespół powypadkowy</h2>
                     <label className={"form-label-title"}>Imię</label>
                     {errors.name && <label className="text-danger"> {errors.name.message} </label>}
                     <input
@@ -162,23 +157,8 @@ const AccidentInvestigators = () => {
                     <button className="btn-light" onClick={addMember} type="button">
                        Zapisz i/lub dodaj kolejną osobę.
                     </button>
-
-                    <br/>
-                    <br/>
-
-                    <button className="btn-light" type="button">
-                        <NavLink
-                            className="nav-link text-info" to={"/protokol-wypadku/krok-1"}
-                        >Wstecz</NavLink>
-                    </button>
-
-                    <button className="float-right btn-light" type="button">
-                        <NavLink className={"nav-link text-info"}
-                                 to={"/protokol-wypadku/krok-3"}>Dalej</NavLink>
-                    </button>
                 </div>
             </form>
-        </div>
     );
 }
 

@@ -24,10 +24,9 @@ const AccidentCircumstances = () => {
     }
 
     return (
-        <div className={"form-container"}>
-            <h2 className="text-center">5. Okoliczności wypadku</h2>
             <form>
                 <div className="container">
+                    <h2 className="text-center">5. Okoliczności wypadku</h2>
                     <label className={"form-label-title"}>Zgłaszający wypadek</label>
                     {errors.reportedBy && <label className="text-danger"> {errors.reportedBy.message} </label>}
                     <input
@@ -60,20 +59,8 @@ const AccidentCircumstances = () => {
                         className={`form-control ${errors.accidentCircumstances ? "border-danger" : ""}`}
                         ref={register}
                     />
-
-                    <button className="btn-light" type="button">
-                        <NavLink
-                            className="nav-link text-info" to={"/protokol-wypadku/krok-4"}
-                        >Wstecz</NavLink>
-                    </button>
-                    <button className="float-right btn-light" type="button">
-                        <NavLink className={"nav-link text-info"}
-                                 to={"/protokol-wypadku/krok-6"}>Dalej</NavLink>
-                    </button>
-
                 </div>
             </form>
-        </div>
     );
 }
 
