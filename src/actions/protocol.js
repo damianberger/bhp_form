@@ -5,7 +5,13 @@ import {
     SET_PROTOCOL_VICTIM,
     SET_PROTOCOL_CIRCUMSTANCES,
     SET_PROTOCOL_CAUSES,
-    SET_PROTOCOL_FAULT
+    SET_PROTOCOL_FAULT,
+    SET_PROTOCOL_EFFECTS,
+    SET_PROTOCOL_TYPES,
+    SET_PROTOCOL_RECOMMENDATIONS,
+    SET_PROTOCOL_OBSTACLES,
+    SET_PROTOCOL_ATTACHMENTS,
+    SET_PROTOCOL_FINISH,
 } from "./types";
 
 
@@ -63,5 +69,50 @@ export const setFault = ({employeeFault, employerFault, employeeIntoxication}) =
         employeeFault: employeeFault,
         employerFault: employerFault,
         employeeIntoxication: employeeIntoxication,
+    }
+});
+
+export const setEffects = ({accidentEffectsDto}) => ({
+    type: SET_PROTOCOL_EFFECTS,
+    payload: {
+        accidentEffectsDto: accidentEffectsDto,
+    }
+});
+
+export const setTypes = ({accidentAtWork, accidentReason, accidentTypeDto}) => ({
+    type: SET_PROTOCOL_TYPES,
+    payload: {
+        accidentAtWork: accidentAtWork,
+        accidentReason: accidentReason,
+        accidentTypeDto: accidentTypeDto,
+    }
+});
+
+export const setRecommendations = ({afterAccidentRecommendationsDto}) => ({
+    type: SET_PROTOCOL_RECOMMENDATIONS,
+    payload: {
+        afterAccidentRecommendationsDto: afterAccidentRecommendationsDto,
+    }
+});
+
+export const setObstacles = ({dateOfPreparation, obstaclesOfPreparationInTerm}) => ({
+    type: SET_PROTOCOL_OBSTACLES,
+    payload: {
+        dateOfPreparation: dateOfPreparation,
+        obstaclesOfPreparationInTerm: obstaclesOfPreparationInTerm,
+    }
+});
+
+export const setAttachments = ({protocolAttachmentsDto}) => ({
+    type: SET_PROTOCOL_ATTACHMENTS,
+    payload: {
+        protocolAttachmentsDto: protocolAttachmentsDto,
+    }
+});
+
+export const setFinish = ({finishedProtocol}) => ({
+    type: SET_PROTOCOL_FINISH,
+    payload: {
+        finishedProtocol: finishedProtocol,
     }
 });

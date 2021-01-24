@@ -13,8 +13,6 @@ const AccidentCauses = () => {
     const {employeeFault: employeeF} = useSelector((state) => state.protocol)
     const {employeeIntoxication: employeeI} = useSelector((state) => state.protocol)
 
-
-
     let accidentCausesDto = causes;
 
     let accidentCause = useWatch({control, name: 'accidentCause',});
@@ -51,25 +49,6 @@ const AccidentCauses = () => {
             <form onSubmit={e => e.preventDefault()}>
                 <div className="container">
 
-                    <label className={"form-label-title"}>Wypadek z winy pracodawcy</label><br/>
-                    <select name="employerFault" ref={register} defaultValue={employerF} onBlur={saveData}>
-                        <option value="TAK">TAK</option>
-                        <option value="NIE">NIE</option>
-                    </select><br/><br/>
-
-                    <label className={"form-label-title"}>Wypadek z winy pracownika</label><br/>
-                    <select name="employeeFault" ref={register} defaultValue={employeeF} onBlur={saveData}>
-                        <option value="TAK">TAK</option>
-                        <option value="NIE">NIE</option>
-                    </select><br/><br/>
-
-                    <label className={"form-label-title"}>Pracownik był w stanie nietrzeźwości lub pod wpływem środków odurzających</label><br/>
-                    <select name="employeeIntoxication" ref={register} defaultValue={employeeI} onBlur={saveData}>
-                        <option value="TAK">TAK</option>
-                        <option value="NIE">NIE</option>
-                    </select><br/><br/>
-
-
                     <label className={"form-label-title"}>Przyczyny wypadku</label>
                     {errors.accidentCause && <label className="text-danger"> {errors.accidentCause.message} </label>}
                     <input
@@ -90,10 +69,37 @@ const AccidentCauses = () => {
 
                     <button className="btn-light" onClick={addCause} type="button">
                         Zapisz i/lub dodaj kolejną przyczynę.
-                    </button>
+                    </button><br/><br/><br/>
 
-                    <br/>
-                    <br/>
+                    <label className={"form-label-title"}>Wypadek z winy pracodawcy</label>
+                    {errors.employerFault && <label className="text-danger"> {errors.employerFault.message} </label>}
+                    <textarea
+                        onBlur={saveData}
+                        defaultValue={employerF}
+                        name="employerFault"
+                        className={`form-control ${errors.employerFault ? "border-danger" : ""}`}
+                        ref={register}
+                    />
+
+                    <label className={"form-label-title"}>Wypadek z winy pracownika</label>
+                    {errors.employeeFault && <label className="text-danger"> {errors.employeeFault.message} </label>}
+                    <textarea
+                        onBlur={saveData}
+                        defaultValue={employeeF}
+                        name="employeeFault"
+                        className={`form-control ${errors.employeeFault ? "border-danger" : ""}`}
+                        ref={register}
+                    />
+
+                    <label className={"form-label-title"}>Pracownik był w stanie nietrzeźwości lub pod wpływem środków odurzających</label>
+                    {errors.employeeIntoxication && <label className="text-danger"> {errors.employeeIntoxication.message} </label>}
+                    <textarea
+                        onBlur={saveData}
+                        defaultValue={employeeI}
+                        name="employeeIntoxication"
+                        className={`form-control ${errors.employeeIntoxication ? "border-danger" : ""}`}
+                        ref={register}
+                    />
 
                     <button className="btn-light" type="button">
                         <NavLink

@@ -17,7 +17,16 @@ const AccidentDates = () => {
     const accidentProceedingStart = useWatch({control, name: 'accidentProceedingStart',});
     const accidentProceedingEnd = useWatch({control, name: 'accidentProceedingEnd',});
     const accidentDate = useWatch({control, name: 'accidentDate',});
-    const accidentTime = useWatch({control, name: 'accidentTime',});
+    const accidentTimeToFormat = useWatch({control, name: 'accidentTime',});
+
+    let accidentTime = "";
+    let time = "";
+    if(accidentDate && accidentTimeToFormat){
+        accidentTime = accidentDate + 'T' + accidentTimeToFormat + ':00.000Z'
+        time = aT.substring(aT.indexOf("T") + 1).substring(0,5);
+    }
+
+
 
 
     const saveData = () => {
@@ -69,7 +78,7 @@ const AccidentDates = () => {
                         onBlur={saveData}
                         name="accidentTime"
                         type="time"
-                        defaultValue={aT}
+                        defaultValue={time}
                         className={`form-control ${errors.accidentTime ? "border-danger" : ""}`}
                         ref={register}
                     />
