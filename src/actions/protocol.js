@@ -12,8 +12,40 @@ import {
     SET_PROTOCOL_OBSTACLES,
     SET_PROTOCOL_ATTACHMENTS,
     SET_PROTOCOL_FINISH,
+    CLEAR_PROTOCOL,
+    GET_PROTOCOL,
 } from "./types";
+import ProtocolService from "../services/ProtocolService";
 
+export const clearProtocol = () => ({
+    type: CLEAR_PROTOCOL,
+    payload: {}
+});
+
+export const getTheProtocol = (number) => (dispatch) => {
+    return ProtocolService.getProtocol(number).then(
+        (data) => {
+            dispatch({
+                type: GET_PROTOCOL,
+                payload: {
+                    protocol: data,
+                },
+            });
+            return Promise.resolve();
+        },
+        (error) => {
+            const message =
+                (error.response &&
+                    error.response.data &&
+                    error.response.data.message) ||
+                error.message ||
+                error.toString();
+
+            console.log(message)
+            return Promise.reject();
+        }
+    );
+};
 
 export const setHeader = ({protocolNumber, companyDto}) => ({
     type: SET_PROTOCOL_HEADER,
@@ -79,12 +111,17 @@ export const setEffects = ({accidentEffectsDto}) => ({
     }
 });
 
-export const setTypes = ({accidentAtWork, accidentReason, accidentTypeDto}) => ({
+export const setTypes = ({accidentAtWork, accidentReason, individualAccident, collectiveAccident, fatalAccident, seriousAccident, workAbsence,}) => ({
     type: SET_PROTOCOL_TYPES,
     payload: {
         accidentAtWork: accidentAtWork,
         accidentReason: accidentReason,
-        accidentTypeDto: accidentTypeDto,
+        individualAccident: individualAccident,
+        collectiveAccident: collectiveAccident,
+        fatalAccident: fatalAccident,
+        seriousAccident: seriousAccident,
+        workAbsence: workAbsence,
+
     }
 });
 

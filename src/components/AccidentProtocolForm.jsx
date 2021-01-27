@@ -19,16 +19,18 @@ const AccidentProtocolForm = () => {
 
     return (
         <div className={'form-container'}>
-            <AccidentHeader/>
-            <AccidentInvestigators/>
-            <AccidentDates/>
-            <AccidentVictim/>
-            <AccidentCircumstances/>
-            <AccidentCauses/>
-            <AccidentEffectsType/>
-            <AccidentRecommendations/>
-            <AccidentAttachments/>
-            <AccidentFinish/>
+            <form onSubmit={e => e.preventDefault()}>
+                <AccidentHeader/>
+                <AccidentInvestigators/>
+                <AccidentDates/>
+                <AccidentVictim/>
+                <AccidentCircumstances/>
+                <AccidentCauses/>
+                <AccidentEffectsType/>
+                <AccidentRecommendations/>
+                <AccidentAttachments/>
+                <AccidentFinish/>
+            </form>
         </div>
     );
 }

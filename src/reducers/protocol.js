@@ -10,7 +10,10 @@ import {
     SET_PROTOCOL_TYPES,
     SET_PROTOCOL_RECOMMENDATIONS,
     SET_PROTOCOL_OBSTACLES,
-    SET_PROTOCOL_ATTACHMENTS, SET_PROTOCOL_FINISH,
+    SET_PROTOCOL_ATTACHMENTS,
+    SET_PROTOCOL_FINISH,
+    CLEAR_PROTOCOL,
+    GET_PROTOCOL,
 } from "../actions/types";
 
 const initialState = {
@@ -23,9 +26,7 @@ const initialState = {
         taxIdentificationNumber: '',
         pkdNumber: ''
     },
-    accidentInvestigatorsDto: [
-
-    ],
+    accidentInvestigatorsDto: [],
     accidentProceedingStart: null,
     accidentProceedingEnd: null,
     accidentDate: null,
@@ -65,13 +66,11 @@ const initialState = {
     ],
     accidentAtWork: true,
     accidentReason: '',
-    accidentTypeDto: {
-        acc1: true,
-        acc2: false,
-        acc3: true,
-        acc4: false,
-        acc5: true,
-    },
+    individualAccident: false,
+    collectiveAccident: false,
+    fatalAccident: false,
+    seriousAccident: false,
+    workAbsence: false,
     afterAccidentRecommendationsDto: [
         {
             recommendation: ''
@@ -89,8 +88,43 @@ const initialState = {
 
 export default function (state = initialState, action) {
     const {type, payload} = action;
-
     switch (type) {
+        case CLEAR_PROTOCOL:
+            return {
+                ...state = initialState,
+            };
+        case GET_PROTOCOL:
+            return {
+                ...state,
+                protocolNumber: payload.protocol.protocolNumber,
+                companyDto: payload.protocol.companyDto,
+                accidentInvestigatorsDto: payload.protocol.accidentInvestigatorsDto,
+                accidentProceedingStart: payload.protocol.accidentProceedingStart,
+                accidentProceedingEnd: payload.protocol.accidentProceedingEnd,
+                accidentDate: payload.protocol.accidentDate,
+                accidentTime: payload.protocol.accidentTime,
+                victimDto: payload.protocol.victimDto,
+                reportedBy: payload.protocol.reportedBy,
+                reportedDate: payload.protocol.reportedDate,
+                accidentCircumstances: payload.protocol.accidentCircumstances,
+                accidentCausesDto: payload.protocol.accidentCausesDto,
+                employerFault: payload.protocol.employerFault,
+                employeeFault: payload.protocol.employeeFault,
+                employeeIntoxication: payload.protocol.employeeIntoxication,
+                accidentEffectsDto: payload.protocol.accidentEffectsDto,
+                accidentAtWork: payload.protocol.accidentAtWork,
+                accidentReason: payload.protocol.accidentReason,
+                individualAccident: payload.protocol.individualAccident,
+                collectiveAccident: payload.protocol.collectiveAccident,
+                fatalAccident: payload.protocol.fatalAccident,
+                seriousAccident: payload.protocol.seriousAccident,
+                workAbsence: payload.protocol.workAbsence,
+                afterAccidentRecommendationsDto: payload.protocol.afterAccidentRecommendationsDto,
+                dateOfPreparation: payload.protocol.dateOfPreparation,
+                obstaclesOfPreparationInTerm: payload.protocol.obstaclesOfPreparationInTerm,
+                protocolAttachmentsDto: payload.protocol.protocolAttachmentsDto,
+                finishedProtocol: payload.protocol.finishedProtocol,
+            };
         case SET_PROTOCOL_HEADER:
             return {
                 ...state,
@@ -144,7 +178,11 @@ export default function (state = initialState, action) {
                 ...state,
                 accidentAtWork: payload.accidentAtWork,
                 accidentReason: payload.accidentReason,
-                accidentTypeDto: payload.accidentTypeDto,
+                individualAccident: payload.individualAccident,
+                collectiveAccident: payload.collectiveAccident,
+                fatalAccident: payload.fatalAccident,
+                seriousAccident: payload.seriousAccident,
+                workAbsence: payload.workAbsence,
             };
         case SET_PROTOCOL_RECOMMENDATIONS:
             return {

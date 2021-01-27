@@ -1,6 +1,5 @@
 import React from "react";
 import {useForm, useWatch} from "react-hook-form";
-import {NavLink} from "react-router-dom";
 import {useDispatch, useSelector} from "react-redux";
 import {setCauses, setFault} from "../actions/protocol";
 
@@ -44,63 +43,64 @@ const AccidentCauses = () => {
     }
 
     return (
-            <form onSubmit={e => e.preventDefault()}>
-                <div className="container">
-                    <h2 className="text-center">6. Przyczyny wypadku</h2>
-                    <label className={"form-label-title"}>Przyczyny wypadku</label>
-                    {errors.accidentCause && <label className="text-danger"> {errors.accidentCause.message} </label>}
-                    <input
-                        name="accidentCause"
-                        type="text"
-                        className={`form-control ${errors.accidentCause ? "border-danger" : ""}`}
-                        ref={register}
-                    />
+        <div className="container">
+            <h2 className="text-center">6. Przyczyny wypadku</h2>
+            <label className={"form-label-title"}>Przyczyny wypadku</label>
+            {errors.accidentCause && <label className="text-danger"> {errors.accidentCause.message} </label>}
+            <input
+                name="accidentCause"
+                type="text"
+                className={`form-control ${errors.accidentCause ? "border-danger" : ""}`}
+                ref={register}
+            />
 
-                    <ol>
-                        {accidentCausesDto.length > 0 && accidentCausesDto.map((item, index) => {
-                            return <li key={index}>{item.accidentCause}
-                                <button className="btn-light" onClick={() => removeCause(index)}>Usuń przyczynę</button>
-                            </li>
-                        })
-                        }
-                    </ol>
+            <ol>
+                {accidentCausesDto.length > 0 && accidentCausesDto.map((item, index) => {
+                    return <li key={index}>{item.accidentCause}
+                        <button className="btn-light" onClick={() => removeCause(index)}>Usuń przyczynę</button>
+                    </li>
+                })
+                }
+            </ol>
 
-                    <button className="btn-light" onClick={addCause} type="button">
-                        Zapisz i/lub dodaj kolejną przyczynę.
-                    </button><br/><br/><br/>
+            <button className="btn-light" onClick={addCause} type="button">
+                Zapisz i/lub dodaj kolejną przyczynę.
+            </button>
+            <br/><br/><br/>
 
-                    <label className={"form-label-title"}>Wypadek z winy pracodawcy</label>
-                    {errors.employerFault && <label className="text-danger"> {errors.employerFault.message} </label>}
-                    <textarea
-                        onBlur={saveData}
-                        defaultValue={employerF}
-                        name="employerFault"
-                        className={`form-control ${errors.employerFault ? "border-danger" : ""}`}
-                        ref={register}
-                    />
+            <label className={"form-label-title"}>Wypadek z winy pracodawcy</label>
+            {errors.employerFault && <label className="text-danger"> {errors.employerFault.message} </label>}
+            <textarea
+                onBlur={saveData}
+                defaultValue={employerF}
+                name="employerFault"
+                className={`form-control ${errors.employerFault ? "border-danger" : ""}`}
+                ref={register}
+            />
 
-                    <label className={"form-label-title"}>Wypadek z winy pracownika</label>
-                    {errors.employeeFault && <label className="text-danger"> {errors.employeeFault.message} </label>}
-                    <textarea
-                        onBlur={saveData}
-                        defaultValue={employeeF}
-                        name="employeeFault"
-                        className={`form-control ${errors.employeeFault ? "border-danger" : ""}`}
-                        ref={register}
-                    />
+            <label className={"form-label-title"}>Wypadek z winy pracownika</label>
+            {errors.employeeFault && <label className="text-danger"> {errors.employeeFault.message} </label>}
+            <textarea
+                onBlur={saveData}
+                defaultValue={employeeF}
+                name="employeeFault"
+                className={`form-control ${errors.employeeFault ? "border-danger" : ""}`}
+                ref={register}
+            />
 
-                    <label className={"form-label-title"}>Pracownik był w stanie nietrzeźwości lub pod wpływem środków odurzających</label>
-                    {errors.employeeIntoxication && <label className="text-danger"> {errors.employeeIntoxication.message} </label>}
-                    <textarea
-                        onBlur={saveData}
-                        defaultValue={employeeI}
-                        name="employeeIntoxication"
-                        className={`form-control ${errors.employeeIntoxication ? "border-danger" : ""}`}
-                        ref={register}
-                    />
-                </div>
-            </form>
-);
+            <label className={"form-label-title"}>Pracownik był w stanie nietrzeźwości lub pod wpływem środków
+                odurzających</label>
+            {errors.employeeIntoxication &&
+            <label className="text-danger"> {errors.employeeIntoxication.message} </label>}
+            <textarea
+                onBlur={saveData}
+                defaultValue={employeeI}
+                name="employeeIntoxication"
+                className={`form-control ${errors.employeeIntoxication ? "border-danger" : ""}`}
+                ref={register}
+            />
+        </div>
+    );
 }
 
 export default AccidentCauses;
