@@ -4,7 +4,7 @@ import {clearProtocol, getTheProtocol} from "../actions/protocol";
 import {useHistory} from "react-router";
 
 const FormList = () => {
-    let {unfinishedProtocols: protocols} = useSelector((state) => state.activeProtocols.dataSummary)
+    let {dataSummary: protocols} = useSelector((state) => state.activeProtocols)
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -29,8 +29,9 @@ const FormList = () => {
             <h3 onClick={() => handleClearForm()} className="nav-link text-info text-center">Formularz ustalenia przyczyn
                 wypadku</h3>
             <h1 className={"text-center"}>Aktywne formularze: </h1>
+            {protocols &&
             <div className={"accidentList"}>
-                {protocols.map((e, index) =>
+                {protocols.unfinishedProtocols.map((e, index) =>
                     <div className={"accidentMini"} key={index} onClick={() => selectForm(e.protocolNumber)}>
                         <p>number={e.protocolNumber}</p>
                         <p>name={e.name}</p>
@@ -38,11 +39,8 @@ const FormList = () => {
                         <p>rDate={e.reportedDate}</p>
                     </div>
                 )}
-
-
             </div>
-
-
+            }
         </div>
     );
 }
