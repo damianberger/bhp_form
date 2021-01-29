@@ -53,6 +53,7 @@ const AccidentRecommendations = () => {
             <button className="btn-light" onClick={addRecommendation} type="button">
                 Zapisz i/lub dodaj kolejne zalecenie.
             </button>
+            <br/><br/>
         </div>
     );
 }

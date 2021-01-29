@@ -39,7 +39,7 @@ const AccidentFinish = () => {
         <div className="container">
             <h2 className="text-center">11. Zakończenie protokołu</h2>
             <br/>
-            <label className={"form-label-title"}>Finalna wersja protokołu</label>
+            <label className={"form-label-title"}>Wpisz protokół do rejestru</label>
             <input type="checkbox" name="finishedProtocol" onBlur={saveData} ref={register}
                    defaultChecked={finished}/><br/>
 
@@ -49,12 +49,10 @@ const AccidentFinish = () => {
                 className={`form-control ${!confirmCheck() ? "border-danger" : ""}`}
                 name="confirmProtocolNumber"
                 type="text"
-                placeholder="Uwaga! Wysłanie finalnej wersji uniemożliwi późniejszą edycję. Potwierdź poprzez ponowne wpisanie numeru protokołu."
+                placeholder="Proszę ponownie wpisać numer protokołu celem potwierdzenia."
                 ref={register}
             />
             }
-
-
 
             <br/>
             <button disabled={finishedProtocol && !confirmCheck()} onClick={submit} className={`${finishedProtocol && !confirmCheck() ? "btn-danger" : "btn-light"}`}

@@ -13,7 +13,7 @@ import {
     SET_PROTOCOL_ATTACHMENTS,
     SET_PROTOCOL_FINISH,
     CLEAR_PROTOCOL,
-    GET_PROTOCOL,
+    GET_PROTOCOL, SET_PROTOCOL_NUMBER, SET_PROTOCOL_COMPANY,
 } from "../actions/types";
 
 const initialState = {
@@ -125,10 +125,14 @@ export default function (state = initialState, action) {
                 protocolAttachmentsDto: payload.protocol.protocolAttachmentsDto,
                 finishedProtocol: payload.protocol.finishedProtocol,
             };
-        case SET_PROTOCOL_HEADER:
+        case SET_PROTOCOL_NUMBER:
             return {
                 ...state,
                 protocolNumber: payload.protocolNumber,
+            };
+        case SET_PROTOCOL_COMPANY:
+            return {
+                ...state,
                 companyDto: payload.companyDto,
             };
         case SET_PROTOCOL_INVESTIGATORS:

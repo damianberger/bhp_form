@@ -1,5 +1,6 @@
 import {
-    SET_PROTOCOL_HEADER,
+    SET_PROTOCOL_NUMBER,
+    SET_PROTOCOL_COMPANY,
     SET_PROTOCOL_INVESTIGATORS,
     SET_PROTOCOL_DATES,
     SET_PROTOCOL_VICTIM,
@@ -47,11 +48,17 @@ export const getTheProtocol = (number) => (dispatch) => {
     );
 };
 
-export const setHeader = ({protocolNumber, companyDto}) => ({
-    type: SET_PROTOCOL_HEADER,
+export const setNumber = ({protocolNumber}) => ({
+    type: SET_PROTOCOL_NUMBER,
     payload: {
             protocolNumber: protocolNumber,
-            companyDto: companyDto,
+    }
+});
+
+export const setCompany = ({companyDto}) => ({
+    type: SET_PROTOCOL_COMPANY,
+    payload: {
+        companyDto: companyDto,
     }
 });
 

@@ -1,18 +1,15 @@
 import React from "react";
-import {useForm, useWatch} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
+import {useForm, useWatch} from "react-hook-form";
 
-import {setHeader} from "../actions/protocol";
+import {setCompany} from "../actions/protocol";
 
 
-
-const AccidentHeader = () => {
+const AccidentCompany = () => {
     const {register, errors, control} = useForm({mode: 'all'});
     const dispatch = useDispatch();
-    const {protocolNumber: number} = useSelector((state) => state.protocol)
-    const {companyDto: company} = useSelector((state) => state.protocol)
 
-    const protocolNumber = useWatch({control, name: 'protocolNumber',});
+    const {companyDto: company} = useSelector((state) => state.protocol)
     const companyName = useWatch({control, name: 'companyName',});
     const street = useWatch({control, name: 'street',});
     const city = useWatch({control, name: 'city',});
@@ -30,26 +27,11 @@ const AccidentHeader = () => {
     }
 
     const saveData = () => {
-        dispatch(setHeader({protocolNumber, companyDto}));
+        dispatch(setCompany({companyDto}));
     }
-
 
     return (
         <div className="container">
-            <h1 className="text-center">Protokół ustalenia przyczyn wypadku</h1>
-
-            <label className={"form-label-title"}>Numer protokołu</label>
-            {errors.protocolNumber && <label className="text-danger"> {errors.protocolNumber.message} </label>}
-            <input
-                onBlur={saveData}
-                name="protocolNumber"
-                type="text"
-                defaultValue={number}
-                className={`form-control ${errors.protocolNumber ? "border-danger" : ""}`}
-                ref={register}
-            />
-
-
             <h2 className="text-center">1. Dane pracodawcy</h2>
 
             <label className={"form-label-title"}>Nazwa firmy</label>
@@ -132,4 +114,4 @@ const AccidentHeader = () => {
     );
 }
 
-export default AccidentHeader;
+export default AccidentCompany;

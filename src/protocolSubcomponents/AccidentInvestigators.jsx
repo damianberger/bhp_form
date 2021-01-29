@@ -34,7 +34,6 @@ const AccidentInvestigators = () => {
         }
     }
 
-
     const addMember = () => {
         if (name && surname && workPosition && companyName && street && city && postalCode && taxIdentificationNumber && pkdNumber) {
             accidentInvestigatorsDto.push(teamMember)

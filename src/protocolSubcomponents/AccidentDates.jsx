@@ -9,11 +9,11 @@ import {setDates} from "../actions/protocol";
 const AccidentDates = () => {
     const {register, errors, control} = useForm({mode: 'all'});
     const dispatch = useDispatch();
+
     const {accidentProceedingStart: aPS} = useSelector((state) => state.protocol)
     const {accidentProceedingEnd: aPE} = useSelector((state) => state.protocol)
     const {accidentDate: aD} = useSelector((state) => state.protocol)
     const {accidentTime: aT} = useSelector((state) => state.protocol)
-
     const accidentProceedingStart = useWatch({control, name: 'accidentProceedingStart',});
     const accidentProceedingEnd = useWatch({control, name: 'accidentProceedingEnd',});
     const accidentDate = useWatch({control, name: 'accidentDate',});
@@ -26,7 +26,6 @@ const AccidentDates = () => {
         time = aT.substring(aT.indexOf("T") + 1).substring(0, 5);
     }
 
-
     const saveData = () => {
         dispatch(setDates({accidentProceedingStart, accidentProceedingEnd, accidentDate, accidentTime}));
     }
@@ -34,6 +33,7 @@ const AccidentDates = () => {
     return (
         <div className="container">
             <h2 className="text-center">3. Dane czasu wypadku</h2>
+
             <label className={"form-label-title"}>Data ustalenia okoliczności wypadku od</label>
             {errors.accidentProceedingStart &&
             <label className="text-danger"> {errors.accidentProceedingStart.message} </label>}

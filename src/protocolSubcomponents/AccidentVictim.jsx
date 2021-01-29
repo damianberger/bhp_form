@@ -1,19 +1,21 @@
 import React from "react";
-import {useForm, useWatch} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
+import {useForm, useWatch} from "react-hook-form";
+
 import {setVictim} from "../actions/protocol";
 
 const AccidentInvestigators = () => {
     const {register, errors, control} = useForm({mode: 'all'});
     const dispatch = useDispatch();
-    const {victimDto: victim} = useSelector((state) => state.protocol)
 
+    const {victimDto: victim} = useSelector((state) => state.protocol)
     const name = useWatch({control, name: 'name',});
     const surname = useWatch({control, name: 'surname',});
     const birthDate = useWatch({control, name: 'birthDate',});
     const workDepartment = useWatch({control, name: 'workDepartment',});
     const workplace = useWatch({control, name: 'workplace',});
     const professionCode = useWatch({control, name: 'professionCode',});
+
     const postalCode = useWatch({control, name: 'postalCode',});
     const city = useWatch({control, name: 'city',});
     const street = useWatch({control, name: 'street',});
@@ -113,7 +115,7 @@ const AccidentInvestigators = () => {
                 ref={register}
             />
 
-            <h3 className="text-center">Dane zamieszkania</h3>
+            <h5 className="text-center">Dane zamieszkania</h5>
 
             <label className={"form-label-title"}>Kod pocztowy</label>
             {errors.postalCode && <label className="text-danger"> {errors.postalCode.message} </label>}

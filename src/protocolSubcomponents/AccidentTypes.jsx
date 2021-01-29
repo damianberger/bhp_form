@@ -1,32 +1,12 @@
 import React from "react";
 import {useForm, useWatch} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
-import {setTypes, setEffects} from "../actions/protocol";
+import {setTypes} from "../actions/protocol";
 
-const AccidentEffectsType = () => {
-    const {register, errors, control, setValue} = useForm({mode: 'all'});
+const AccidentTypes = () => {
     const dispatch = useDispatch();
-    const {accidentEffectsDto: effects} = useSelector((state) => state.protocol)
+    const {register, errors, control, setValue} = useForm({mode: 'all'});
 
-    let accidentEffectsDto = effects;
-    let accidentEffect = useWatch({control, name: 'accidentEffect',});
-
-    let effect = {
-        accidentEffect: accidentEffect,
-    }
-
-    const addEffect = () => {
-        if (accidentEffect) {
-            accidentEffectsDto.push(effect)
-        }
-        setValue('accidentEffect', '');
-        dispatch(setEffects({accidentEffectsDto}));
-    }
-
-    const removeEffect = (index) => {
-        accidentEffectsDto.splice(index, 1);
-        dispatch(setEffects({accidentEffectsDto}));
-    }
 
     const {individualAccident: individual} = useSelector((state) => state.protocol)
     const {collectiveAccident: collective} = useSelector((state) => state.protocol)
@@ -60,31 +40,6 @@ const AccidentEffectsType = () => {
 
     return (
         <div className="container">
-            <h2 className="text-center">7. Konsekwencje wypadku</h2>
-            <label className={"form-label-title"}>Konsekwencja wypadku</label>
-            {errors.accidentEffects && <label className="text-danger"> {errors.accidentEffects.message} </label>}
-            <input
-                name="accidentEffect"
-                type="text"
-                className={`form-control ${errors.accidentEffects ? "border-danger" : ""}`}
-                ref={register}
-            />
-
-            <ol>
-                {accidentEffectsDto.length > 0 && accidentEffectsDto.map((item, index) => {
-                    return <li key={index}>{item.accidentEffect}
-                        <button className="btn-light" onClick={() => removeEffect(index)}>Usuń konsekwencje</button>
-                    </li>
-                })
-                }
-            </ol>
-
-            <button className="btn-light" onClick={addEffect} type="button">
-                Zapisz i/lub dodaj kolejną konsekwencję.
-            </button>
-            <br/><br/><br/>
-
-
             <h2 className="text-center">8. Typy wypadku</h2>
             <label className={"form-label-title"}>Wypadek w pracy</label>
             <input type="checkbox" name="accidentAtWork" onBlur={saveData} ref={register} defaultChecked={atWork}/><br/><br/>
@@ -99,7 +54,6 @@ const AccidentEffectsType = () => {
                 ref={register}
             />
 
-
             <label className={"form-label-title"}>Wypadek indywidualny</label>
             <input type="checkbox" name="individualAccident" onBlur={saveData} ref={register} defaultChecked={individual}/><br/><br/>
 
@@ -113,9 +67,9 @@ const AccidentEffectsType = () => {
             <input type="checkbox" name="seriousAccident" onBlur={saveData} ref={register} defaultChecked={serious}/><br/><br/>
 
             <label className={"form-label-title"}>Wypadek powodujący niezdolność do pracy</label>
-            <input type="checkbox" name="workAbsence" onBlur={saveData} ref={register} defaultChecked={workAbsence}/><br/><br/>
+            <input type="checkbox" name="workAbsence" onBlur={saveData} ref={register} defaultChecked={absence}/><br/><br/>
         </div>
     );
 }
 
-export default AccidentEffectsType;
+export default AccidentTypes;

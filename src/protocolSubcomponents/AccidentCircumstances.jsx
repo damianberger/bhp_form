@@ -1,6 +1,6 @@
 import React from "react";
-import {useForm, useWatch} from "react-hook-form";
 import {useDispatch, useSelector} from "react-redux";
+import {useForm, useWatch} from "react-hook-form";
 
 import {setCircumstances} from "../actions/protocol";
 
@@ -9,14 +9,13 @@ import {setCircumstances} from "../actions/protocol";
 const AccidentCircumstances = () => {
     const {register, errors, control} = useForm({mode: 'all'});
     const dispatch = useDispatch();
-    const {reportedBy: reportBy} = useSelector((state) => state.protocol)
-    const {reportedDate: reportDate} = useSelector((state) => state.protocol)
-    const {accidentCircumstances: circumstances} = useSelector((state) => state.protocol)
 
+    const {reportedBy: reportBy} = useSelector((state) => state.protocol);
+    const {reportedDate: reportDate} = useSelector((state) => state.protocol);
+    const {accidentCircumstances: circumstances} = useSelector((state) => state.protocol);
     const reportedBy = useWatch({control, name: 'reportedBy',});
     const reportedDate = useWatch({control, name: 'reportedDate',});
     const accidentCircumstances = useWatch({control, name: 'accidentCircumstances',});
-
 
     const saveData = () => {
         dispatch(setCircumstances({reportedBy, reportedDate, accidentCircumstances}));
