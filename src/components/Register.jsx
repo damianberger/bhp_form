@@ -5,12 +5,14 @@ import {useDispatch, useSelector} from "react-redux";
 import {registerWorker} from '../actions/auth';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {useHistory} from "react-router";
 
 const Register = () => {
     const {register, handleSubmit, watch, errors} = useForm();
     const password = useRef({});
     const {message} = useSelector(state => state.message);
     const dispatch = useDispatch();
+    const history = useHistory();
 
     useEffect(() => {
         document.title = 'Rejestracja';
@@ -30,6 +32,7 @@ const Register = () => {
         dispatch(registerWorker(data.username, data.password, companyDto))
             .then(() => {
                 alert("Zarejestrowano. Prosze potwierdzić rejestracje poprzez Email");
+                history.push("/logowanie");
             })
             .catch(() => {
                 console.log(message);

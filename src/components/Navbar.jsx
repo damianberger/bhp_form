@@ -34,7 +34,6 @@ const Navbar = ({collapsed, setCollapsed}) => {
             <div className={`${collapsed ? 'collapse' : ''} navbar-collapse`} id="collapsing-navbar">
                 <NavLink to={"/pomoc"} className="nav-link text-info">Pomoc</NavLink>
 
-                <NavLink to={"/lista-formularzy"} className="nav-link text-info">Lista Formularzy</NavLink>
 
                 {!currentUser &&
                 <NavLink to={"/logowanie"} className="nav-link text-info">Zaloguj</NavLink>
@@ -49,8 +48,18 @@ const Navbar = ({collapsed, setCollapsed}) => {
                 }
 
                 {currentUser &&
-                <NavLink to={"/login"} className="nav-link text-info" onClick={logOut}>Wyloguj</NavLink>
+                <NavLink to={"/lista-formularzy"} className="nav-link text-info">Lista Formularzy</NavLink>
                 }
+
+                {currentUser &&
+                <NavLink to={"/rejestr"} className="nav-link text-info">Rejestr</NavLink>
+                }
+
+                {currentUser &&
+                <NavLink to={"/"} className="nav-link text-info" onClick={() => logOut()}>Wyloguj</NavLink>
+                }
+
+
 
             </div>
         </nav>

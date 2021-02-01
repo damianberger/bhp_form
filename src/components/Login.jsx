@@ -5,12 +5,14 @@ import {useDispatch, useSelector} from "react-redux";
 import {login} from '../actions/auth';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import {useHistory} from "react-router";
 
 const Login = () => {
     const {register, handleSubmit, watch, errors} = useForm();
     const password = useRef({});
     const {message} = useSelector(state => state.message);
     const dispatch = useDispatch();
+    const history = useHistory();
 
     useEffect(() => {
         document.title = 'Logowanie';
@@ -22,6 +24,8 @@ const Login = () => {
         dispatch(login(data.username, data.password))
             .then(() => {
                 alert("Zalogowano");
+                history.push("/");
+
             })
             .catch(() => {
                 console.log(message);
